@@ -1,0 +1,14 @@
+{
+  "name": "alphainvestpro-demo-recorder",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AlphaInvestPro 全流程视频演示录制脚本（Playwright）",
+  "type": "module",
+  "scripts": {
+    "record": "node record_demo.mjs",
+    "generate-doc": "node generate_doc.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.53.0"
+  }
+}

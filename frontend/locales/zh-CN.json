@@ -1,0 +1,173 @@
+{
+  "app": {
+    "name": "AlphaInvestPro",
+    "tagline": "有纪律的 AI 投资研究"
+  },
+  "nav": {
+    "dashboard": "仪表盘",
+    "newAnalysis": "新建分析",
+    "watchlist": "观察列表",
+    "reports": "报告",
+    "settings": "设置"
+  },
+  "common": {
+    "loading": "加载中…",
+    "error": "出错了，请重试。",
+    "empty": "暂无内容。",
+    "save": "保存",
+    "delete": "删除",
+    "cancel": "取消",
+    "add": "添加",
+    "back": "返回",
+    "retry": "重试",
+    "view": "查看",
+    "mockData": "模拟数据",
+    "mockLlm": "模拟 LLM 输出",
+    "incomplete": "不完整",
+    "notAdvice": "AlphaInvestPro 是研究工具，本页所有内容均不构成投资建议。AI 输出与估值假设可能有误，本工具不承诺任何盈利。"
+  },
+  "dashboard": {
+    "title": "仪表盘",
+    "subtitle": "把杂乱的股票问题变成结构化的投资备忘录。",
+    "startAnalysis": "开始新分析",
+    "recentReports": "最近的报告",
+    "noReports": "还没有报告，先运行一次分析吧。",
+    "reportsCount": "报告数",
+    "watchlistCount": "观察列表",
+    "dataMode": "数据模式",
+    "llmMode": "LLM 模式",
+    "live": "在线",
+    "mock": "模拟"
+  },
+  "analysisNew": {
+    "title": "新建分析",
+    "subtitle": "输入股票代码，选择研究深度，获得结构化备忘录。",
+    "tickerLabel": "股票代码 / 公司",
+    "tickerPlaceholder": "例如 AAPL、MSFT、KO",
+    "modeLabel": "分析模式",
+    "reportLanguageLabel": "报告语言",
+    "start": "开始分析",
+    "starting": "启动中…",
+    "tickerRequired": "请输入股票代码。",
+    "mode": {
+      "quick_screen": "快速筛查",
+      "full_memo": "完整备忘录",
+      "risk_review": "风险审视",
+      "valuation_check": "估值检查"
+    },
+    "modeDesc": {
+      "quick_screen": "对基本面进行快速通过/未通过清单检查。",
+      "full_memo": "完整流程：质量、护城河、估值、风险与最终备忘录。",
+      "risk_review": "以逆向思维优先，审视什么会摧毁投资论点。",
+      "valuation_check": "给出合理价值区间，所有假设可审计。"
+    }
+  },
+  "analysis": {
+    "title": "分析进行中",
+    "job": "任务",
+    "status": {
+      "pending": "等待中",
+      "running": "运行中",
+      "completed": "已完成",
+      "failed": "失败"
+    },
+    "viewReport": "查看完整报告",
+    "timelineTitle": "Agent 时间线",
+    "step": {
+      "input_normalization": "输入规范化",
+      "identification": "公司识别",
+      "quick_screen": "快速筛查",
+      "business_quality": "商业质量",
+      "moat": "护城河审视",
+      "management": "管理层与资本配置",
+      "valuation": "估值",
+      "inversion_risk": "逆向 / 风险审视",
+      "bull_bear": "多头 / 空头观点",
+      "final_memo": "最终备忘录"
+    },
+    "stepWaiting": "等待",
+    "stepRunning": "运行中…",
+    "stepDone": "完成",
+    "passed": "通过",
+    "failedJob": "分析失败。"
+  },
+  "report": {
+    "title": "投资报告",
+    "verdict": "最终结论",
+    "confidence": "置信度",
+    "verdicts": {
+      "avoid": "回避",
+      "watchlist": "观察",
+      "attractive": "有吸引力",
+      "uncertain": "不确定"
+    },
+    "checklist": "快速筛查清单",
+    "pass": "通过",
+    "fail": "未通过",
+    "businessQuality": "商业质量",
+    "moat": "护城河",
+    "moatRisks": "护城河风险",
+    "valuation": "估值",
+    "method": "估值方法",
+    "fairValueRange": "合理价值区间",
+    "low": "低",
+    "base": "基准",
+    "high": "高",
+    "assumptions": "假设",
+    "assumptionName": "假设项",
+    "assumptionValue": "取值",
+    "assumptionSource": "来源",
+    "riskReview": "风险与逆向审视",
+    "topRisks": "主要风险",
+    "thesisKillers": "论点致命项",
+    "inversionQuestion": "逆向问题",
+    "bullCase": "多头观点",
+    "bearCase": "空头观点",
+    "finalMemo": "最终备忘录",
+    "evidence": "证据与数据来源",
+    "evidenceProvider": "提供方",
+    "evidenceRetrieved": "获取时间",
+    "exportMarkdown": "导出 Markdown",
+    "exportJson": "导出 JSON",
+    "addToWatchlist": "加入观察列表",
+    "addedToWatchlist": "已加入观察列表",
+    "score": "评分",
+    "notReady": "报告尚未生成。"
+  },
+  "reports": {
+    "title": "报告",
+    "subtitle": "所有已生成投资备忘录的历史记录。",
+    "empty": "还没有报告，运行一次分析来生成第一份备忘录。",
+    "company": "公司",
+    "mode": "模式",
+    "verdict": "结论",
+    "confidence": "置信度",
+    "date": "日期"
+  },
+  "watchlist": {
+    "title": "观察列表",
+    "subtitle": "等待更好价格或更多证据的公司。",
+    "empty": "观察列表为空。",
+    "tickerPlaceholder": "股票代码（如 KO）",
+    "notePlaceholder": "备注（可选）",
+    "add": "加入观察列表",
+    "lastVerdict": "最近结论",
+    "added": "加入时间",
+    "remove": "移除"
+  },
+  "settings": {
+    "title": "设置",
+    "subtitle": "连接状态与默认项。API Key 仅保存在后端。",
+    "language": "界面语言",
+    "deepseek": "DeepSeek 大模型",
+    "qveris": "QVeris 市场数据",
+    "connected": "已连接",
+    "mockMode": "模拟模式（未配置 API Key）",
+    "model": "模型",
+    "session": "会话",
+    "defaultMode": "默认分析模式",
+    "save": "保存设置",
+    "saved": "设置已保存。",
+    "keysNote": "API Key 通过后端环境变量（.env）配置，永远不会发送到浏览器。"
+  }
+}
