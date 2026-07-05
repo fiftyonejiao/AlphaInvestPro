@@ -117,7 +117,7 @@ class AnalysisOrchestrator:
         complete, missing = evidence_service.required_fields_present(bundle)
 
         # Step: quick screen (always runs)
-        checklist = buffett_skill_service.quick_screen(bundle.fundamentals)
+        checklist = buffett_skill_service.quick_screen(bundle.fundamentals, language)
         passed = sum(1 for c in checklist if c.passed)
         await self._step(
             job_id, "quick_screen",
@@ -126,17 +126,17 @@ class AnalysisOrchestrator:
         )
 
         # Optional deep steps
-        quality = buffett_skill_service.business_quality(bundle)
-        moat = buffett_skill_service.moat_review(bundle)
+        quality = buffett_skill_service.business_quality(bundle, language)
+        moat = buffett_skill_service.moat_review(bundle, language)
         if "business_quality" in steps:
             await self._step(job_id, "business_quality", {"score": quality.score, "summary": quality.summary})
         if "moat" in steps:
             await self._step(job_id, "moat", {"score": moat.score, "summary": moat.summary})
         if "management" in steps:
-            mgmt = buffett_skill_service.management_review(bundle)
+            mgmt = buffett_skill_service.management_review(bundle, language)
             await self._step(job_id, "management", mgmt)
 
-        valuation = valuation_service.compute_valuation(bundle)
+        valuation = valuation_service.compute_valuation(bundle, language)
         pv = valuation_service.price_vs_value(bundle, valuation)
         if "valuation" in steps:
             await self._step(
@@ -198,7 +198,12 @@ class AnalysisOrchestrator:
         )
         if not complete:
             # Validation gate: don't silently ship reports missing required data.
-            report.risk_review.top_risks.insert(0, f"Report incomplete — missing fields: {', '.join(missing)}")
+            note = (
+                f"报告不完整 — 缺失字段：{', '.join(missing)}"
+                if language == "zh-CN"
+                else f"Report incomplete — missing fields: {', '.join(missing)}"
+            )
+            report.risk_review.top_risks.insert(0, note)
 
         report.final_memo_markdown = render_memo_markdown(
             report,
@@ -248,22 +253,34 @@ class AnalysisOrchestrator:
 
     @staticmethod
     def _risk_review(bundle, checklist, moat, language: str) -> RiskReview:
+        zh = language == "zh-CN"
         f = bundle.fundamentals
         top_risks: list[str] = list(moat.risks)
         killers: list[str] = []
         for c in checklist:
             if not c.passed:
-                top_risks.append(f"Failed screen: {c.label} ({c.detail})")
+                top_risks.append(
+                    f"筛查未通过：{c.label}（{c.detail}）" if zh else f"Failed screen: {c.label} ({c.detail})"
+                )
         if (f.debt_to_equity or 0) > 1.5:
-            killers.append("Leverage spiral: high debt could impair the business in a downturn.")
+            killers.append(
+                "杠杆螺旋：高负债在下行周期中可能损害企业。" if zh
+                else "Leverage spiral: high debt could impair the business in a downturn."
+            )
         if (f.pe_ratio or 0) > 40:
-            killers.append("Valuation compression: a de-rating from a high multiple could dominate returns.")
+            killers.append(
+                "估值压缩：高倍数的下修可能主导投资回报。" if zh
+                else "Valuation compression: a de-rating from a high multiple could dominate returns."
+            )
         if not killers:
-            killers.append("Permanent loss of competitive position or a structural demand shift.")
+            killers.append(
+                "竞争地位的永久性丧失或需求的结构性转变。" if zh
+                else "Permanent loss of competitive position or a structural demand shift."
+            )
         negative_news = [n.title for n in bundle.news.items if n.sentiment == "negative"]
         for title in negative_news[:2]:
-            top_risks.append(f"News flag: {title}")
-        if language == "zh-CN":
+            top_risks.append(f"新闻提示：{title}" if zh else f"News flag: {title}")
+        if zh:
             question = f"反过来想：什么情况会让持有 {bundle.profile.name} 成为明显的错误？"
         else:
             question = f"Invert: what would have to be true for owning {bundle.profile.name} to be an obvious mistake?"
@@ -271,32 +288,60 @@ class AnalysisOrchestrator:
 
     @staticmethod
     def _bull_bear(bundle, quality, moat, pv, language: str):
+        zh = language == "zh-CN"
         f = bundle.fundamentals
         bull: list[str] = []
         bear: list[str] = []
         if quality.score >= 6.5:
-            bull.append("High-quality economics: strong returns on capital and margins.")
+            bull.append(
+                "优质商业模式：资本回报率与利润率俱佳。" if zh
+                else "High-quality economics: strong returns on capital and margins."
+            )
         if moat.score >= 6.0:
-            bull.append("Moat indicators suggest durable pricing power.")
+            bull.append(
+                "护城河指标显示具备持久的定价权。" if zh
+                else "Moat indicators suggest durable pricing power."
+            )
         if (f.revenue_growth_5y or 0) >= 0.08:
-            bull.append(f"Revenue compounding at ~{(f.revenue_growth_5y or 0) * 100:.0f}%/yr over five years.")
+            growth = (f.revenue_growth_5y or 0) * 100
+            bull.append(
+                f"过去五年营收以约 {growth:.0f}%/年 的速度复合增长。" if zh
+                else f"Revenue compounding at ~{growth:.0f}%/yr over five years."
+            )
         if pv["discount_to_base"] > 0.05:
-            bull.append(f"Price sits ~{pv['discount_to_base'] * 100:.0f}% below base-case fair value.")
+            disc = pv["discount_to_base"] * 100
+            bull.append(
+                f"当前价格较基准合理价值低约 {disc:.0f}%。" if zh
+                else f"Price sits ~{disc:.0f}% below base-case fair value."
+            )
         if not bull:
-            bull.append("Limited bull case on current data; a materially lower price would improve the setup.")
+            bull.append(
+                "以当前数据看多头论据有限；价格显著回落将改善投资机会。" if zh
+                else "Limited bull case on current data; a materially lower price would improve the setup."
+            )
 
         if pv["discount_to_base"] < -0.05:
-            bear.append(f"Price sits ~{abs(pv['discount_to_base']) * 100:.0f}% above base-case fair value.")
+            prem = abs(pv["discount_to_base"]) * 100
+            bear.append(
+                f"当前价格较基准合理价值高约 {prem:.0f}%。" if zh
+                else f"Price sits ~{prem:.0f}% above base-case fair value."
+            )
         if (f.pe_ratio or 0) > 30:
-            bear.append(f"Elevated earnings multiple ({f.pe_ratio:.0f}x) leaves little room for disappointment.")
+            bear.append(
+                f"市盈率偏高（{f.pe_ratio:.0f} 倍），容错空间很小。" if zh
+                else f"Elevated earnings multiple ({f.pe_ratio:.0f}x) leaves little room for disappointment."
+            )
         for r in moat.risks[:2]:
             bear.append(r)
         if not bear:
-            bear.append("Execution slips, competitive pressure, or macro shocks could impair intrinsic value.")
+            bear.append(
+                "执行失误、竞争压力或宏观冲击都可能损害内在价值。" if zh
+                else "Execution slips, competitive pressure, or macro shocks could impair intrinsic value."
+            )
 
         for n in bundle.news.items:
             if n.sentiment == "positive" and len(bull) < 5:
-                bull.append(f"Supporting news: {n.title}")
+                bull.append(f"利好新闻：{n.title}" if zh else f"Supporting news: {n.title}")
             elif n.sentiment == "negative" and len(bear) < 5:
-                bear.append(f"Cautionary news: {n.title}")
+                bear.append(f"预警新闻：{n.title}" if zh else f"Cautionary news: {n.title}")
         return bull[:5], bear[:5]

@@ -16,6 +16,9 @@ node_modules/
 out/
 npm-debug.log*
 
+# Demo recordings
+demo/output/
+
 # OS / editor
 .DS_Store
 *.swp

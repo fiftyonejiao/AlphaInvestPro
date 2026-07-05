@@ -97,6 +97,11 @@ class TestModesAndLanguages:
         db.close()
         assert "投资备忘录" in report.memo_markdown
         assert "不构成投资建议" in report.memo_markdown
+        # Analysis content itself must be localized, not just memo headers.
+        parsed = AnalysisReport.model_validate(report.data)
+        assert any("持续盈利" == c.label for c in parsed.checklist)
+        assert "反过来想" in parsed.risk_review.inversion_question
+        assert any(a.name == "自由现金流" for a in parsed.valuation.assumptions)
 
 
 class TestLlmServiceBoundary:
