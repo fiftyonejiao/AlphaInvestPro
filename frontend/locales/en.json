@@ -1,0 +1,173 @@
+{
+  "app": {
+    "name": "AlphaInvestPro",
+    "tagline": "Disciplined AI investment research"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "newAnalysis": "New Analysis",
+    "watchlist": "Watchlist",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "empty": "Nothing here yet.",
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "add": "Add",
+    "back": "Back",
+    "retry": "Retry",
+    "view": "View",
+    "mockData": "MOCK DATA",
+    "mockLlm": "MOCK LLM OUTPUT",
+    "incomplete": "INCOMPLETE",
+    "notAdvice": "AlphaInvestPro is a research tool. Nothing here is financial advice. AI output and valuation assumptions may be wrong. No promise of profitability."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Turn messy stock questions into structured investment memos.",
+    "startAnalysis": "Start a new analysis",
+    "recentReports": "Recent reports",
+    "noReports": "No reports yet. Run your first analysis.",
+    "reportsCount": "Reports",
+    "watchlistCount": "Watchlist items",
+    "dataMode": "Data mode",
+    "llmMode": "LLM mode",
+    "live": "Live",
+    "mock": "Mock"
+  },
+  "analysisNew": {
+    "title": "New Analysis",
+    "subtitle": "Enter a ticker, choose a research depth, get a structured memo.",
+    "tickerLabel": "Ticker / Company",
+    "tickerPlaceholder": "e.g. AAPL, MSFT, KO",
+    "modeLabel": "Analysis mode",
+    "reportLanguageLabel": "Report language",
+    "start": "Start analysis",
+    "starting": "Starting…",
+    "tickerRequired": "Please enter a ticker symbol.",
+    "mode": {
+      "quick_screen": "Quick Screen",
+      "full_memo": "Full Memo",
+      "risk_review": "Risk Review",
+      "valuation_check": "Valuation Check"
+    },
+    "modeDesc": {
+      "quick_screen": "Fast pass/fail checklist over the fundamentals.",
+      "full_memo": "Complete workflow: quality, moat, valuation, risk, and final memo.",
+      "risk_review": "Inversion-first review of what could kill the thesis.",
+      "valuation_check": "Fair-value range with explicit, auditable assumptions."
+    }
+  },
+  "analysis": {
+    "title": "Analysis in progress",
+    "job": "Job",
+    "status": {
+      "pending": "Pending",
+      "running": "Running",
+      "completed": "Completed",
+      "failed": "Failed"
+    },
+    "viewReport": "View full report",
+    "timelineTitle": "Agent timeline",
+    "step": {
+      "input_normalization": "Input normalization",
+      "identification": "Company identification",
+      "quick_screen": "Quick screen",
+      "business_quality": "Business quality",
+      "moat": "Moat review",
+      "management": "Management & capital allocation",
+      "valuation": "Valuation",
+      "inversion_risk": "Inversion / risk review",
+      "bull_bear": "Bull case / bear case",
+      "final_memo": "Final memo"
+    },
+    "stepWaiting": "Waiting",
+    "stepRunning": "Running…",
+    "stepDone": "Done",
+    "passed": "passed",
+    "failedJob": "The analysis failed."
+  },
+  "report": {
+    "title": "Investment Report",
+    "verdict": "Final verdict",
+    "confidence": "Confidence",
+    "verdicts": {
+      "avoid": "Avoid",
+      "watchlist": "Watchlist",
+      "attractive": "Attractive",
+      "uncertain": "Uncertain"
+    },
+    "checklist": "Quick screen checklist",
+    "pass": "Pass",
+    "fail": "Fail",
+    "businessQuality": "Business quality",
+    "moat": "Moat",
+    "moatRisks": "Moat risks",
+    "valuation": "Valuation",
+    "method": "Method",
+    "fairValueRange": "Fair value range",
+    "low": "Low",
+    "base": "Base",
+    "high": "High",
+    "assumptions": "Assumptions",
+    "assumptionName": "Assumption",
+    "assumptionValue": "Value",
+    "assumptionSource": "Source",
+    "riskReview": "Risk & inversion review",
+    "topRisks": "Top risks",
+    "thesisKillers": "Thesis killers",
+    "inversionQuestion": "Inversion question",
+    "bullCase": "Bull case",
+    "bearCase": "Bear case",
+    "finalMemo": "Final memo",
+    "evidence": "Evidence & data sources",
+    "evidenceProvider": "Provider",
+    "evidenceRetrieved": "Retrieved",
+    "exportMarkdown": "Export Markdown",
+    "exportJson": "Export JSON",
+    "addToWatchlist": "Add to watchlist",
+    "addedToWatchlist": "Added to watchlist",
+    "score": "Score",
+    "notReady": "The report is not ready yet."
+  },
+  "reports": {
+    "title": "Reports",
+    "subtitle": "History of all generated investment memos.",
+    "empty": "No reports yet. Run an analysis to create your first memo.",
+    "company": "Company",
+    "mode": "Mode",
+    "verdict": "Verdict",
+    "confidence": "Confidence",
+    "date": "Date"
+  },
+  "watchlist": {
+    "title": "Watchlist",
+    "subtitle": "Companies you are tracking for a better price or more evidence.",
+    "empty": "Your watchlist is empty.",
+    "tickerPlaceholder": "Ticker (e.g. KO)",
+    "notePlaceholder": "Note (optional)",
+    "add": "Add to watchlist",
+    "lastVerdict": "Last verdict",
+    "added": "Added",
+    "remove": "Remove"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Connection status and defaults. API keys stay on the backend.",
+    "language": "Interface language",
+    "deepseek": "DeepSeek LLM",
+    "qveris": "QVeris market data",
+    "connected": "Connected",
+    "mockMode": "Mock mode (no API key)",
+    "model": "Model",
+    "session": "Session",
+    "defaultMode": "Default analysis mode",
+    "save": "Save settings",
+    "saved": "Settings saved.",
+    "keysNote": "API keys are configured via backend environment variables (.env) and are never sent to the browser."
+  }
+}

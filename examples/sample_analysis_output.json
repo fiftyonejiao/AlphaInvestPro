@@ -1,0 +1,164 @@
+{
+  "company": "Apple Inc.",
+  "ticker": "AAPL",
+  "analysis_mode": "full_memo",
+  "final_verdict": "watchlist",
+  "confidence": 0.6,
+  "business_quality": {
+    "score": 9.0,
+    "summary": "High-quality business with strong returns, margins, and cash generation.",
+    "evidence": [
+      "High return on equity (147.0%)",
+      "Strong net margin (25.0%)",
+      "Excellent FCF conversion (111% of net income)",
+      "Steady revenue growth (8.0% over 5y)"
+    ]
+  },
+  "moat": {
+    "score": 9.0,
+    "summary": "Indicators consistent with a durable competitive advantage (high margins and returns on capital).",
+    "risks": [
+      "Even durable advantages can erode; monitor competitive dynamics."
+    ]
+  },
+  "valuation": {
+    "method": "fcf_yield",
+    "fair_value_range": {
+      "low": 89.4,
+      "base": 110.04,
+      "high": 143.05
+    },
+    "assumptions": [
+      {
+        "name": "Free cash flow",
+        "value": "108,000,000,000",
+        "source": "MOCK DATA"
+      },
+      {
+        "name": "Shares outstanding",
+        "value": "15,100,000,000",
+        "source": "MOCK DATA"
+      },
+      {
+        "name": "FCF per share",
+        "value": "7.15",
+        "source": "derived"
+      },
+      {
+        "name": "Required FCF yield (low/base/high price)",
+        "value": "8.0% / 6.5% / 5.0%",
+        "source": "manual assumption"
+      },
+      {
+        "name": "Data timestamps",
+        "value": "source: n/a, retrieved: 2026-07-05T03:33:15.075818+00:00",
+        "source": "MOCK DATA"
+      }
+    ]
+  },
+  "risk_review": {
+    "top_risks": [
+      "Even durable advantages can erode; monitor competitive dynamics.",
+      "Failed screen: Debt under control (D/E below 1.0 or high cash) (Debt/Equity: 1.87)",
+      "News flag: Regulatory scrutiny on app store fees"
+    ],
+    "thesis_killers": [
+      "Leverage spiral: high debt could impair the business in a downturn."
+    ],
+    "inversion_question": "Invert: what would have to be true for owning Apple Inc. to be an obvious mistake?"
+  },
+  "bull_case": [
+    "High-quality economics: strong returns on capital and margins.",
+    "Moat indicators suggest durable pricing power.",
+    "Revenue compounding at ~8%/yr over five years.",
+    "Supporting news: Services revenue reaches new record"
+  ],
+  "bear_case": [
+    "Price sits ~108% above base-case fair value.",
+    "Elevated earnings multiple (36x) leaves little room for disappointment.",
+    "Even durable advantages can erode; monitor competitive dynamics.",
+    "Cautionary news: Regulatory scrutiny on app store fees"
+  ],
+  "final_memo_markdown": "# Apple Inc. (AAPL) — Investment Memo\n\n> **MOCK DATA** — QVeris is not configured. All figures are illustrative demo values.\n> **MOCK LLM OUTPUT** — DeepSeek is not configured. Narration is placeholder text.\n\n**Final Verdict:** Watchlist  \n**Confidence:** 60%  \n**Analysis Mode:** `full_memo`\n\n## Quick Screen Checklist\n- ✅ **Consistently profitable** — PASS. Net income: 97,000,000,000\n- ✅ **Return on equity above 12%** — PASS. ROE: 147.0%\n- ✅ **Operating margin above 15%** — PASS. Operating margin: 31.0%\n- ✅ **Positive free cash flow** — PASS. FCF: 108,000,000,000\n- ❌ **Debt under control (D/E below 1.0 or high cash)** — FAIL. Debt/Equity: 1.87\n- ✅ **Revenue growing (5y average above 3%)** — PASS. 5y revenue growth: 8.0%\n\n## Business Quality — 9.0/10\nHigh-quality business with strong returns, margins, and cash generation.\n- High return on equity (147.0%)\n- Strong net margin (25.0%)\n- Excellent FCF conversion (111% of net income)\n- Steady revenue growth (8.0% over 5y)\n\n[MOCK LLM OUTPUT] DeepSeek API key is not configured; this is placeholder narration. All figures in the 'business_quality' section come from deterministic calculations and data sources, without LLM commentary. Set DEEPSEEK_API_KEY for real AI narration.\n\n## Moat — 9.0/10\nIndicators consistent with a durable competitive advantage (high margins and returns on capital).\n- ⚠️ Even durable advantages can erode; monitor competitive dynamics.\n\n## Valuation\n**Method:** `fcf_yield`  \n**Fair Value Range (low / base / high):** 89.40 / 110.04 / 143.05\n\n**Assumptions:**\n\n| # | Name | Value | Source |\n| --- | --- | --- | --- |\n| 1 | Free cash flow | 108,000,000,000 | MOCK DATA |\n| 2 | Shares outstanding | 15,100,000,000 | MOCK DATA |\n| 3 | FCF per share | 7.15 | derived |\n| 4 | Required FCF yield (low/base/high price) | 8.0% / 6.5% / 5.0% | manual assumption |\n| 5 | Data timestamps | source: n/a, retrieved: 2026-07-05T03:33:15.075818+00:00 | MOCK DATA |\n\n## Risk & Inversion Review\n**Top Risks:**\n- Even durable advantages can erode; monitor competitive dynamics.\n- Failed screen: Debt under control (D/E below 1.0 or high cash) (Debt/Equity: 1.87)\n- News flag: Regulatory scrutiny on app store fees\n**Thesis Killers:**\n- Leverage spiral: high debt could impair the business in a downturn.\n**Inversion Question:** Invert: what would have to be true for owning Apple Inc. to be an obvious mistake?\n\n## Bull Case\n- High-quality economics: strong returns on capital and margins.\n- Moat indicators suggest durable pricing power.\n- Revenue compounding at ~8%/yr over five years.\n- Supporting news: Services revenue reaches new record\n\n## Bear Case\n- Price sits ~108% above base-case fair value.\n- Elevated earnings multiple (36x) leaves little room for disappointment.\n- Even durable advantages can erode; monitor competitive dynamics.\n- Cautionary news: Regulatory scrutiny on app store fees\n\n[MOCK LLM OUTPUT] DeepSeek API key is not configured; this is placeholder narration. All figures in the 'final_memo' section come from deterministic calculations and data sources, without LLM commentary. Set DEEPSEEK_API_KEY for real AI narration.\n\n## Evidence & Data Sources\n- Quote: provider `mock`, retrieved 2026-07-05T03:33:15.075708+00:00 **[MOCK DATA]**\n- Company profile: provider `mock`, retrieved 2026-07-05T03:33:15.075797+00:00 **[MOCK DATA]**\n- Fundamentals: provider `mock`, retrieved 2026-07-05T03:33:15.075818+00:00 **[MOCK DATA]**\n- News & sentiment: provider `mock`, retrieved 2026-07-05T03:33:15.075856+00:00 **[MOCK DATA]**\n\n---\n*AlphaInvestPro is a research tool. This memo is not financial advice. AI output and valuation assumptions may be wrong. Nothing here is a promise of profitability.*",
+  "checklist": [
+    {
+      "key": "profitability",
+      "label": "Consistently profitable",
+      "passed": true,
+      "detail": "Net income: 97,000,000,000"
+    },
+    {
+      "key": "roe",
+      "label": "Return on equity above 12%",
+      "passed": true,
+      "detail": "ROE: 147.0%"
+    },
+    {
+      "key": "margins",
+      "label": "Operating margin above 15%",
+      "passed": true,
+      "detail": "Operating margin: 31.0%"
+    },
+    {
+      "key": "fcf",
+      "label": "Positive free cash flow",
+      "passed": true,
+      "detail": "FCF: 108,000,000,000"
+    },
+    {
+      "key": "debt",
+      "label": "Debt under control (D/E below 1.0 or high cash)",
+      "passed": false,
+      "detail": "Debt/Equity: 1.87"
+    },
+    {
+      "key": "growth",
+      "label": "Revenue growing (5y average above 3%)",
+      "passed": true,
+      "detail": "5y revenue growth: 8.0%"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "name": "Quote",
+      "provider": "mock",
+      "capability_id": null,
+      "retrieval_timestamp": "2026-07-05T03:33:15.075708+00:00",
+      "source_timestamp": null,
+      "is_mock": true,
+      "note": "MOCK DATA — quote. QVeris not configured; values are illustrative only."
+    },
+    {
+      "name": "Company profile",
+      "provider": "mock",
+      "capability_id": null,
+      "retrieval_timestamp": "2026-07-05T03:33:15.075797+00:00",
+      "source_timestamp": null,
+      "is_mock": true,
+      "note": "MOCK DATA — company profile. QVeris not configured; values are illustrative only."
+    },
+    {
+      "name": "Fundamentals",
+      "provider": "mock",
+      "capability_id": null,
+      "retrieval_timestamp": "2026-07-05T03:33:15.075818+00:00",
+      "source_timestamp": null,
+      "is_mock": true,
+      "note": "MOCK DATA — fundamentals. QVeris not configured; values are illustrative only."
+    },
+    {
+      "name": "News & sentiment",
+      "provider": "mock",
+      "capability_id": null,
+      "retrieval_timestamp": "2026-07-05T03:33:15.075856+00:00",
+      "source_timestamp": null,
+      "is_mock": true,
+      "note": "MOCK DATA — news. QVeris not configured; values are illustrative only."
+    }
+  ],
+  "is_mock_data": true,
+  "is_mock_llm": true,
+  "is_incomplete": false,
+  "language": "en",
+  "generated_at": "2026-07-05T03:33:15.119572+00:00"
+}
