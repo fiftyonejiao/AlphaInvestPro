@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>AlphaInvestPro 产品说明文档</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { font-family: "Noto Sans CJK SC", "Noto Sans SC", "WenQuanYi Micro Hei", sans-serif; }
+  body { color: #1a2332; }
+
+  .slide {
+    width: 1280px; height: 720px;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    background: #f7f9fc;
+    display: flex; flex-direction: column;
+  }
+  .slide:last-child { page-break-after: avoid; }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    background: linear-gradient(135deg, #0b1f3a 0%, #123a6b 55%, #1b5aa0 100%);
+    color: #fff;
+    justify-content: center; align-items: center;
+  }
+  .cover .deco-ring {
+    position: absolute; border-radius: 50%; border: 2px solid rgba(255,255,255,0.08);
+  }
+  .cover .logo-badge {
+    width: 96px; height: 96px; border-radius: 24px;
+    background: linear-gradient(135deg, #f5b942, #e8873a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px; font-weight: 800; color: #0b1f3a;
+    margin-bottom: 36px; box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  .cover h1 { font-size: 72px; letter-spacing: 2px; font-weight: 800; }
+  .cover .subtitle { font-size: 30px; margin-top: 20px; color: #cfe0f5; font-weight: 500; }
+  .cover .tagline { font-size: 20px; margin-top: 14px; color: #9db8d9; }
+  .cover .doc-type {
+    margin-top: 56px; padding: 12px 36px; border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 999px; font-size: 20px; letter-spacing: 6px; color: #e8f0fa;
+  }
+
+  /* ---------- Common slide chrome ---------- */
+  .head {
+    padding: 44px 70px 0 70px;
+    display: flex; align-items: baseline; gap: 20px;
+  }
+  .head .num {
+    font-size: 26px; font-weight: 800; color: #fff;
+    background: linear-gradient(135deg, #1b5aa0, #123a6b);
+    border-radius: 12px; padding: 8px 18px;
+  }
+  .head h2 { font-size: 40px; font-weight: 800; color: #0b1f3a; }
+  .head .en { font-size: 17px; color: #8ea3bd; font-weight: 600; letter-spacing: 1px; }
+  .body { flex: 1; padding: 30px 70px 30px 70px; }
+  .foot {
+    height: 54px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 70px; color: #8ea3bd; font-size: 14px;
+    border-top: 1px solid #e2e9f2; background: #fff;
+  }
+  .accentbar { position: absolute; top: 0; left: 0; width: 100%; height: 8px;
+    background: linear-gradient(90deg, #1b5aa0, #f5b942); }
+
+  /* ---------- Content primitives ---------- */
+  .lead { font-size: 22px; line-height: 1.65; color: #2b3a52; }
+  .lead b { color: #123a6b; }
+
+  .cards { display: grid; gap: 22px; }
+  .cards.c2 { grid-template-columns: 1fr 1fr; }
+  .cards.c3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card {
+    background: #fff; border-radius: 16px; padding: 22px 26px;
+    box-shadow: 0 4px 18px rgba(18,58,107,0.08);
+    border-top: 4px solid #1b5aa0;
+  }
+  .card.gold { border-top-color: #f5b942; }
+  .card h3 { font-size: 21px; color: #123a6b; margin-bottom: 10px; font-weight: 700; }
+  .card p, .card li { font-size: 16.5px; line-height: 1.6; color: #3d4d66; }
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 5px; }
+
+  .biglist { list-style: none; }
+  .biglist li {
+    font-size: 20px; line-height: 1.55; color: #2b3a52;
+    padding: 13px 0 13px 44px; position: relative;
+    border-bottom: 1px dashed #dde5ef;
+  }
+  .biglist li::before {
+    content: "▸"; position: absolute; left: 10px; color: #f5b942; font-size: 22px;
+  }
+  .biglist li b { color: #123a6b; }
+
+  .pill {
+    display: inline-block; background: #e8f0fa; color: #123a6b;
+    border-radius: 999px; padding: 5px 16px; font-size: 15px; font-weight: 600;
+    margin: 0 8px 8px 0;
+  }
+  .pill.warn { background: #fdf1dc; color: #9a6a12; }
+
+  table.tbl { width: 100%; border-collapse: collapse; background: #fff;
+    border-radius: 14px; overflow: hidden; box-shadow: 0 4px 18px rgba(18,58,107,0.08); }
+  table.tbl th { background: #123a6b; color: #fff; font-size: 17px; padding: 12px 18px; text-align: left; }
+  table.tbl td { font-size: 16px; padding: 11px 18px; border-bottom: 1px solid #edf2f8; color: #3d4d66; line-height: 1.5; }
+  table.tbl tr:last-child td { border-bottom: none; }
+
+  .flow { display: flex; align-items: stretch; gap: 0; margin-top: 8px; }
+  .flow .step {
+    flex: 1; background: #fff; border: 2px solid #d5e2f2; border-radius: 12px;
+    padding: 14px 10px; text-align: center; position: relative;
+  }
+  .flow .step .t { font-size: 16px; font-weight: 700; color: #123a6b; }
+  .flow .step .d { font-size: 12.5px; color: #6b7f9c; margin-top: 5px; line-height: 1.4; }
+  .flow .arrow { display: flex; align-items: center; padding: 0 6px; color: #f5b942; font-size: 22px; font-weight: 800; }
+
+  .progress-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .progress-row .lbl { width: 300px; font-size: 17px; color: #2b3a52; font-weight: 600; }
+  .progress-row .bar { flex: 1; height: 18px; background: #e2e9f2; border-radius: 999px; overflow: hidden; }
+  .progress-row .bar > div { height: 100%; border-radius: 999px;
+    background: linear-gradient(90deg, #1b5aa0, #3f83c9); }
+  .progress-row .pct { width: 64px; text-align: right; font-size: 16px; font-weight: 700; color: #123a6b; }
+
+  .note {
+    margin-top: 18px; background: #fdf6e8; border-left: 5px solid #f5b942;
+    border-radius: 0 12px 12px 0; padding: 14px 20px; font-size: 16px; color: #6b5316; line-height: 1.6;
+  }
+
+  .backcover {
+    background: linear-gradient(135deg, #0b1f3a 0%, #123a6b 100%);
+    color: #fff; justify-content: center; align-items: center; text-align: center;
+  }
+  .backcover h2 { font-size: 52px; font-weight: 800; }
+  .backcover p { font-size: 21px; color: #b9cde8; margin-top: 22px; max-width: 900px; line-height: 1.7; }
+  .backcover .disc { font-size: 16px; color: #7e97b8; margin-top: 44px; max-width: 880px; line-height: 1.7;
+    border-top: 1px solid rgba(255,255,255,0.15); padding-top: 26px; }
+</style>
+</head>
+<body>
+
+<!-- ============ Slide 1: 封面 / 项目名称 ============ -->
+<div class="slide cover">
+  <div class="deco-ring" style="width:600px;height:600px;top:-220px;right:-180px;"></div>
+  <div class="deco-ring" style="width:400px;height:400px;bottom:-160px;left:-120px;"></div>
+  <div class="deco-ring" style="width:900px;height:900px;top:-380px;right:-320px;"></div>
+  <div class="logo-badge">α</div>
+  <h1>AlphaInvestPro</h1>
+  <div class="subtitle">智能投资分析工作台 · AI-Powered Investment Research Workbench</div>
+  <div class="tagline">把杂乱的股票问题，变成一份结构化、可审计的投资备忘录</div>
+  <div class="doc-type">产 品 说 明 文 档</div>
+</div>
+
+<!-- ============ Slide 2: 项目简介 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">02</span><h2>项目简介</h2><span class="en">PRODUCT OVERVIEW</span></div>
+  <div class="body">
+    <p class="lead">
+      <b>AlphaInvestPro</b> 是一款简洁的智能投资分析产品（本地优先 MVP）。用户输入一家公司或股票代码，选择分析深度，
+      系统即通过 <b>AI 智能体工作流</b> 产出一份覆盖 <b>商业质量、护城河、估值、风险、多空论点与最终结论</b> 的结构化投资备忘录。
+    </p>
+    <div style="height:26px"></div>
+    <div class="cards c3">
+      <div class="card">
+        <h3>不是聊天机器人</h3>
+        <p>不把推理藏在长篇对话里。每一步分析——快速筛查、质量透镜、估值检查、逆向风险审查、最终备忘录——都以可见的时间线呈现。</p>
+      </div>
+      <div class="card gold">
+        <h3>纪律化价值投资框架</h3>
+        <p>内置经典价值投资分析范式：商业质量与护城河评估、管理层与资本配置审视、估值假设透明化、逆向思维式风险清单。</p>
+      </div>
+      <div class="card">
+        <h3>仅限研究用途</h3>
+        <p>定位为投资研究工具，<b>不含任何交易执行</b>、券商接入或自动化下单能力。所有输出附带风险与不确定性说明。</p>
+      </div>
+    </div>
+    <div style="height:24px"></div>
+    <div>
+      <span class="pill">中英双语界面（English / 简体中文）</span>
+      <span class="pill">结构化 JSON → Markdown 报告</span>
+      <span class="pill">可视化智能体流水线</span>
+      <span class="pill">本地优先部署</span>
+      <span class="pill warn">非投资建议 · Research Only</span>
+    </div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>02 / 12</span></div>
+</div>
+
+<!-- ============ Slide 3: 解决的问题与应用场景 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">03</span><h2>解决的问题与应用场景</h2><span class="en">PROBLEM &amp; USE CASES</span></div>
+  <div class="body">
+    <div class="cards c2">
+      <div class="card">
+        <h3>用户痛点</h3>
+        <ul>
+          <li>通用 AI 聊天工具产出的研报<b>冗长、不稳定、不可复现</b>；</li>
+          <li>商业质量、估值、风险与最终结论<b>混在一起</b>，缺乏分析纪律；</li>
+          <li>AI 可能"编造"财务数字，<b>数据来源与假设不透明</b>；</li>
+          <li>普通投资者缺少一套像分析师检查清单一样的<b>结构化工作流</b>。</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <h3>产品承诺</h3>
+        <ul>
+          <li>一次输入，产出<b>结构统一</b>的投资备忘录；</li>
+          <li>分析步骤全程<b>可见、可审计、可导出</b>；</li>
+          <li>所有财务数字来自真实数据源，<b>标注来源与时间戳</b>；</li>
+          <li>每个估值数字都<b>暴露背后假设</b>，每个结论都附带风险提示。</li>
+        </ul>
+      </div>
+    </div>
+    <div style="height:22px"></div>
+    <h3 style="font-size:22px;color:#123a6b;margin-bottom:14px;">典型应用场景与目标用户</h3>
+    <table class="tbl">
+      <tr><th style="width:240px;">用户群体</th><th>使用场景</th></tr>
+      <tr><td>个人投资者</td><td>想要纪律化的个股分析，但不想成为量化开发者；用于建立自己的研究检查清单。</td></tr>
+      <tr><td>商科学生 / 研究入门者</td><td>学习结构化投资思维：如何拆解商业质量、护城河、估值与风险。</td></tr>
+      <tr><td>产品经理 / 创业者 / Builder</td><td>需要一个干净、可演示的 AI 投资分析原型，验证产品思路。</td></tr>
+      <tr><td>AI Agent 开发者与研究者</td><td>探索透明假设、证据链与结构化输出的 AI 辅助投研工作流范式。</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>03 / 12</span></div>
+</div>
+
+<!-- ============ Slide 4: 核心功能说明 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">04</span><h2>核心功能说明</h2><span class="en">CORE FEATURES</span></div>
+  <div class="body">
+    <div class="cards c3">
+      <div class="card">
+        <h3>① 四种分析模式</h3>
+        <ul>
+          <li><b>快速筛查</b>（Quick Screen）</li>
+          <li><b>完整备忘录</b>（Full Memo）</li>
+          <li><b>风险审查</b>（Risk Review）</li>
+          <li><b>估值检查</b>（Valuation Check）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>② 可视化分析时间线</h3>
+        <p>实时展示每个智能体步骤的进度与产出：快速筛查 → 商业质量 → 护城河 → 管理层与资本配置 → 估值 → 逆向风险 → 最终备忘录。</p>
+      </div>
+      <div class="card">
+        <h3>③ 结构化投资备忘录</h3>
+        <p>输出统一 Schema：最终判断（回避 / 观察 / 有吸引力 / 不确定）、置信度、质量与护城河评分、估值区间、多空论点、风险清单。</p>
+      </div>
+      <div class="card">
+        <h3>④ 估值假设表</h3>
+        <p>支持简单倍数法、轻量 DCF、FCF 收益率等方法；每条假设均标注<b>名称、取值与数据来源</b>，给出低 / 基准 / 高三档合理价值区间。</p>
+      </div>
+      <div class="card">
+        <h3>⑤ 逆向风险审查</h3>
+        <p>逆向思维式提问："什么情况会让这笔投资失败？" 输出核心风险、论点杀手（thesis killers）与逆向检验问题。</p>
+      </div>
+      <div class="card">
+        <h3>⑥ 报告历史 / 自选股 / 设置</h3>
+        <p>报告可保存、检索与导出；自选股列表沉淀观察标的；设置页展示 LLM 连接状态与语言切换（English / 简体中文）。</p>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="flow">
+      <div class="step"><div class="t">输入标的</div><div class="d">公司名 / 代码</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">选择模式</div><div class="d">四种研究深度</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">智能体流水线</div><div class="d">实时进度可见</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">结构化报告</div><div class="d">评分 + 证据 + 假设</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">保存 / 导出</div><div class="d">报告历史沉淀</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>04 / 12</span></div>
+</div>
+
+<!-- ============ Slide 5: AI 使用方式与技术方案 (1) ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">05</span><h2>AI 使用方式与技术方案（一）</h2><span class="en">AI ARCHITECTURE — ROLE OF AI</span></div>
+  <div class="body">
+    <p class="lead" style="font-size:19px;">
+      AI 是本产品的<b>核心功能</b>而非辅助功能：整条"分析流水线"由大语言模型驱动的多步骤智能体工作流构成。
+      同时产品坚持一条铁律——<b>LLM 负责推理与写作，确定性代码负责计算与数据</b>。
+    </p>
+    <div style="height:18px"></div>
+    <table class="tbl">
+      <tr><th style="width:250px;">AI 能力</th><th>在产品中的具体作用</th></tr>
+      <tr><td><b>大语言模型（LLM）</b></td><td>统一采用 DeepSeek（默认 <code>deepseek-chat</code>）作为唯一 LLM 运行时，经后端 <code>DeepSeekClient</code> 封装调用，密钥仅存于服务端。</td></tr>
+      <tr><td><b>智能体工作流（Agentic Workflow）</b></td><td>分析编排器按固定顺序调度多个分析步骤（筛查 → 质量 → 护城河 → 管理层 → 估值 → 逆向风险 → 备忘录），每步产出独立、可检查的中间结果。</td></tr>
+      <tr><td><b>工具调用（Tool Calling）</b></td><td>LLM 通过"发现 → 检查 → 调用"流程使用金融数据网关的能力（行情、财报、公司画像、新闻情绪），而非凭空生成数据。</td></tr>
+      <tr><td><b>提示词工程（Prompt Engineering）</b></td><td>将价值投资方法论（质量透镜、逆向思维审查、估值纪律、风险闸门）固化为分步骤的系统提示词模板，保证输出风格与结构稳定。</td></tr>
+      <tr><td><b>结构化输出（Structured Output）</b></td><td>所有分析结果先约束为严格 JSON Schema（评分、区间、证据数组），再渲染为 Markdown 备忘录，保证可校验、可存储、可复现。</td></tr>
+      <tr><td><b>文本理解 / 生成</b></td><td>理解公司业务描述与新闻情绪作为辅助证据；生成中 / 英双语备忘录，跟随界面语言输出。</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>05 / 12</span></div>
+</div>
+
+<!-- ============ Slide 6: AI 使用方式与技术方案 (2) ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">06</span><h2>AI 使用方式与技术方案（二）</h2><span class="en">AI ARCHITECTURE — TECH STACK &amp; GUARDRAILS</span></div>
+  <div class="body" style="padding-top:20px;">
+    <div class="cards c2">
+      <div class="card">
+        <h3>技术栈</h3>
+        <ul>
+          <li><b>前端</b>：Next.js + TypeScript + Tailwind + shadcn/ui，i18n 双语切换；</li>
+          <li><b>后端</b>：FastAPI + Python，分析编排器 + 服务分层（LLM 服务 / 行情服务 / 基本面服务 / 报告服务 / 证据服务）；</li>
+          <li><b>数据库</b>：SQLite（MVP），抽象层可平滑迁移 PostgreSQL；</li>
+          <li><b>实时进度</b>：Server-Sent Events（SSE）推送智能体步骤事件；</li>
+          <li><b>报告渲染</b>：结构化 JSON → Markdown（后续支持 PDF）。</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <h3>AI 安全护栏（Guardrails）</h3>
+        <ul>
+          <li><b>禁止编造数字</b>：价格、财报、估值输入、市值、比率等一律来自数据层，LLM 只能引用；</li>
+          <li><b>确定性计算</b>：估值等金融计算由代码完成，附假设、来源、时间戳与校验；</li>
+          <li><b>可审计</b>：每个 AI 输出可解释、可回看、有日志、可导出；</li>
+          <li><b>降级策略</b>：LLM 密钥缺失时功能明确降级，界面清晰标注 <code>MOCK LLM OUTPUT</code>；</li>
+          <li><b>数据完整性闸门</b>：关键财务字段缺失时拒绝生成"完整"报告，或显式标记为不完整。</li>
+        </ul>
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <div class="flow">
+      <div class="step"><div class="t">用户请求</div><div class="d">标的 + 模式</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">数据网关</div><div class="d">行情 / 财报 / 新闻<br>归一化 + 溯源</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">确定性计算</div><div class="d">估值 / 比率<br>代码计算</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">LLM 智能体推理</div><div class="d">质量 / 护城河 / 风险<br>基于真实数据</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">结构化备忘录</div><div class="d">JSON Schema<br>→ Markdown</div></div>
+    </div>
+    <div class="note" style="margin-top:12px;padding:10px 20px;font-size:15px;">如实说明：语音 / 图像多模态、模型微调、向量记忆 RAG 暂不在 MVP 范围内；MVP 以"实时工具调用 + 证据注入"替代离线知识库检索。</div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>06 / 12</span></div>
+</div>
+
+<!-- ============ Slide 7: 数据来源与数据处理方式 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">07</span><h2>数据来源与数据处理方式</h2><span class="en">DATA SOURCES &amp; PIPELINE</span></div>
+  <div class="body">
+    <div class="cards c2">
+      <div class="card">
+        <h3>统一数据来源：QVeris.ai 金融数据网关</h3>
+        <p style="margin-bottom:8px;">所有股票金融数据经由 <b>QVeris.ai</b> 统一接入（后端专用 <code>QverisClient</code> 封装），覆盖：</p>
+        <ul>
+          <li>实时报价与最新价格、历史价格趋势；</li>
+          <li>公司画像与业务描述；</li>
+          <li>财务报表与归一化基本面数据；</li>
+          <li>估值输入项（营收、利润、自由现金流、股本、负债、现金、利润率、比率）；</li>
+          <li>市场新闻与情绪——仅作辅助证据，不作最终决策依据。</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <h3>数据处理与治理</h3>
+        <ul>
+          <li><b>归一化</b>：全部外部响应先转换为内部统一 Schema，再进入分析智能体与 UI；</li>
+          <li><b>全链路溯源</b>：每个数据点记录提供方、能力 ID、源时间戳、获取时间戳、币种、代码、市场与数据质量备注；</li>
+          <li><b>密钥安全</b>：API Key 仅存于服务端环境变量，绝不进入前端、日志、报告或代码仓库；</li>
+          <li><b>降级机制</b>：数据源不可用时仅回退到显式演示数据，界面与报告明确标注 <code>MOCK DATA</code>；</li>
+          <li><b>校验闸门</b>：估值表必须展示数据来源、时间戳与人工假设，缺失关键字段的报告将被拒绝或标记不完整。</li>
+        </ul>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="flow">
+      <div class="step"><div class="t">数据网关接入</div><div class="d">发现 → 检查 → 调用</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">Schema 归一化</div><div class="d">统一内部数据模型</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">溯源与打标</div><div class="d">来源 / 时间戳 / 质量备注</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">校验闸门</div><div class="d">缺数据 = 拒绝或标记</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="t">供 AI 与 UI 消费</div><div class="d">证据列表可回查</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>07 / 12</span></div>
+</div>
+
+<!-- ============ Slide 8: 运行 / 访问 / 演示方式 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">08</span><h2>产品运行、访问与演示方式</h2><span class="en">RUN &amp; DEMO</span></div>
+  <div class="body">
+    <div class="cards c2">
+      <div class="card">
+        <h3>运行方式（本地优先）</h3>
+        <ul>
+          <li>通过 <b>Docker Compose</b> 一键启动前端 + 后端 + 数据库；</li>
+          <li>复制 <code>.env.example</code> → <code>.env</code>，配置 DeepSeek 与 QVeris API Key；</li>
+          <li>浏览器访问本地 Web 界面即可使用；</li>
+          <li>无密钥也可运行：自动进入演示模式（Mock 数据 / Mock LLM 输出，界面显式标注）。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>访问方式（Web 界面）</h3>
+        <ul>
+          <li><b>Dashboard</b> — 总览入口；</li>
+          <li><b>New Analysis</b> — 发起新分析任务；</li>
+          <li><b>Analysis Detail</b> — 实时智能体时间线；</li>
+          <li><b>Reports</b> — 报告历史与详情；</li>
+          <li><b>Watchlist</b> — 自选股列表；</li>
+          <li><b>Settings</b> — LLM 状态、语言切换（EN / 简体中文）。</li>
+        </ul>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="card" style="border-top-color:#f5b942;">
+      <h3>三分钟演示路径</h3>
+      <div class="flow" style="margin-top:10px;">
+        <div class="step"><div class="t">1. 打开 Dashboard</div><div class="d">切换到简体中文界面</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="t">2. 输入标的</div><div class="d">如 AAPL，选"完整备忘录"</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="t">3. 观看流水线</div><div class="d">七个分析步骤实时推进</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="t">4. 阅读备忘录</div><div class="d">评分 / 估值区间 / 多空 / 风险</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="t">5. 导出与沉淀</div><div class="d">保存报告，加入自选股</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>08 / 12</span></div>
+</div>
+
+<!-- ============ Slide 9: 项目创新点 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">09</span><h2>项目创新点</h2><span class="en">INNOVATIONS</span></div>
+  <div class="body">
+    <ul class="biglist">
+      <li><b>可见的智能体工作流，而非"黑箱 AI 魔法"</b> —— 用户能看到每个分析步骤的输入、产出与证据，把 AI 投研从"信不信"变成"查得到"。</li>
+      <li><b>"LLM 推理 + 确定性计算"双轨架构</b> —— 金融数字全部由代码计算并附假设与来源，LLM 只做定性推理与写作，从机制上杜绝 AI 编造财务数据。</li>
+      <li><b>价值投资方法论产品化</b> —— 将质量透镜、逆向思维审查、估值纪律、风险闸门等经典分析范式固化为可复用、可复现的工作流，而非一次性提示词演示。</li>
+      <li><b>结构化输出优先</b> —— 统一 JSON Schema 先行、Markdown 渲染在后，报告可校验、可比较、可沉淀为研究资产。</li>
+      <li><b>全链路数据溯源与降级透明</b> —— 每个数据点带来源与时间戳；任何 Mock 数据 / Mock 输出都在界面显式标注，保持诚实。</li>
+      <li><b>克制的产品边界</b> —— 明确"仅限研究、绝不下单"，把研究判断与交易执行彻底分离，是负责任 AI 金融产品的设计范本。</li>
+    </ul>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>09 / 12</span></div>
+</div>
+
+<!-- ============ Slide 10: 当前完成度 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">10</span><h2>当前完成度</h2><span class="en">CURRENT STATUS</span></div>
+  <div class="body" style="padding-top:18px;">
+    <div class="progress-row" style="margin-bottom:9px;"><div class="lbl">产品定义与完整工程规格</div><div class="bar"><div style="width:100%"></div></div><div class="pct">100%</div></div>
+    <div class="progress-row" style="margin-bottom:9px;"><div class="lbl">架构设计（API / 数据模型 / Schema）</div><div class="bar"><div style="width:100%"></div></div><div class="pct">100%</div></div>
+    <div class="progress-row" style="margin-bottom:9px;"><div class="lbl">AI 方案与安全护栏设计</div><div class="bar"><div style="width:100%"></div></div><div class="pct">100%</div></div>
+    <div class="progress-row" style="margin-bottom:9px;"><div class="lbl">MVP 实施计划（11 步分阶段路线图）</div><div class="bar"><div style="width:100%"></div></div><div class="pct">100%</div></div>
+    <div class="progress-row" style="margin-bottom:9px;"><div class="lbl">MVP 代码实现（骨架 → Mock → 真实接入）</div><div class="bar"><div style="width:15%"></div></div><div class="pct">启动中</div></div>
+    <div style="height:8px"></div>
+    <div class="cards c2">
+      <div class="card">
+        <h3>已完成</h3>
+        <ul>
+          <li>完整产品规格：边界、原则、用户旅程、页面与组件清单；</li>
+          <li>后端服务分层、API 接口、输出 JSON Schema 全部定稿；</li>
+          <li>数据接入规范、LLM 运行时规范、双语 GUI 规范与验收标准；</li>
+          <li>明确的"MVP 不做清单"，防止范围蔓延。</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <h3>进行中 / 待完成（按既定路线图）</h3>
+        <ul>
+          <li>项目骨架与 Mock 分析任务 API；</li>
+          <li>前端页面（先 Mock 数据后联调）；</li>
+          <li>数据网关客户端与归一化、检查清单逻辑、备忘录渲染；</li>
+          <li>报告历史、自选股、设置页与文档示例。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:12px;padding:10px 20px;font-size:15px;">MVP 完成标准（Definition of Done）已明确定义：本地可运行、可创建分析任务、进度可见、备忘录结构化可读、报告历史与自选股可用、双语切换可用、无任何交易执行。</div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>10 / 12</span></div>
+</div>
+
+<!-- ============ Slide 11: 风险 / 局限 / 未来方向 ============ -->
+<div class="slide">
+  <div class="accentbar"></div>
+  <div class="head"><span class="num">11</span><h2>风险提示、局限性与未来改进方向</h2><span class="en">RISKS &amp; ROADMAP</span></div>
+  <div class="body">
+    <div class="cards c3">
+      <div class="card" style="border-top-color:#c0392b;">
+        <h3>风险提示</h3>
+        <ul>
+          <li><b>非投资建议</b>：所有输出仅供研究参考，不构成任何买卖建议；</li>
+          <li>AI 输出可能存在错误、偏差或遗漏；</li>
+          <li>估值假设可能不成立，合理价值区间不代表未来价格；</li>
+          <li>产品不承诺任何盈利能力，投资决策责任在用户。</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top-color:#9a6a12;">
+        <h3>当前局限性</h3>
+        <ul>
+          <li>MVP 阶段，依赖单一 LLM 供应商与单一数据网关；</li>
+          <li>数据覆盖与质量受上游数据源限制；</li>
+          <li>估值方法偏简化（倍数 / 轻量 DCF），不含复杂建模；</li>
+          <li>无回测、无组合管理、无多租户与生产级安全承诺；</li>
+          <li>本地优先部署，暂无云端 SaaS 版本。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>未来改进方向</h3>
+        <ul>
+          <li>报告 <b>PDF 导出</b> 与更丰富的可视化图表；</li>
+          <li>行业对比与多标的横向分析；</li>
+          <li>引入向量记忆 / RAG，沉淀历史研究知识库；</li>
+          <li>PostgreSQL 迁移与多用户支持；</li>
+          <li>智能体评估回路（Agent Evals），持续度量分析质量；</li>
+          <li>更多估值方法与情景敏感性分析。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:24px;">
+      设计原则始终不变：<b>研究与执行分离</b>——无论未来如何演进，产品都不会加入实盘交易、券商接入或自动下单能力；
+      所有 AI 结论必须继续保持可解释、可审计、附带风险与不确定性说明。
+    </div>
+  </div>
+  <div class="foot"><span>AlphaInvestPro · 产品说明文档</span><span>11 / 12</span></div>
+</div>
+
+<!-- ============ Slide 12: 封底 ============ -->
+<div class="slide backcover">
+  <div class="logo-badge" style="width:80px;height:80px;border-radius:20px;font-size:44px;background:linear-gradient(135deg,#f5b942,#e8873a);display:flex;align-items:center;justify-content:center;color:#0b1f3a;font-weight:800;margin-bottom:30px;">α</div>
+  <h2>AlphaInvestPro</h2>
+  <p>清晰胜过复杂 · 可见的工作流胜过隐藏的 AI 魔法 · 结构化输出胜过冗长对话<br>确定性计算胜过 LLM 猜测 · 日志与证据胜过空口断言</p>
+  <div class="disc">
+    免责声明：AlphaInvestPro 是一款研究工具，其产出的任何内容均不构成投资建议。
+    AI 输出与估值假设可能存在错误。本产品不执行任何交易。
+  </div>
+</div>
+
+</body>
+</html>
