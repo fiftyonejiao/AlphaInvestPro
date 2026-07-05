@@ -1,6 +1,6 @@
 # AlphaInvestPro 演示视频录制脚本
 
-使用 Playwright 自动打开应用并录制一段完整的中文视频演示，内容按章节覆盖：
+使用 Playwright 自动打开应用并录制一段完整的中文视频演示。配套简短演示文档见 [`DEMO_DOC.md`](DEMO_DOC.md)，内容按章节覆盖：
 
 1. 项目简介
 2. 使用场景说明
